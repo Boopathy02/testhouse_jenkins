@@ -37,6 +37,9 @@ pipeline {
     stage('Prepare .env') {
       steps {
         script {
+          if (!params.ENV_FILE_CRED_ID?.trim() && !fileExists('.env')) {
+            error('ENV_FILE_CRED_ID is empty and .env is missing. Provide a Secret file or commit .env to the workspace.')
+          }
           if (params.ENV_FILE_CRED_ID?.trim()) {
             withCredentials([file(credentialsId: params.ENV_FILE_CRED_ID, variable: 'ENV_FILE_PATH')]) {
               def safeTag = (env.BUILD_TAG ?: 'jenkins').replaceAll(/[^A-Za-z0-9_.-]/, '_')
