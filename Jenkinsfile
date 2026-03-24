@@ -18,6 +18,7 @@ pipeline {
   environment {
     COMPOSE_FILE = 'docker-compose.yaml'
     PROJECT_NAME = 'testify-automator'
+    ENV_FILE = '.env'
   }
 
   stages {
@@ -31,21 +32,22 @@ pipeline {
       steps {
         script {
           if (params.ENV_FILE_CRED_ID?.trim()) {
-            withCredentials([file(credentialsId: params.ENV_FILE_CRED_ID, variable: 'ENV_FILE')]) {
-              sh 'cp "$ENV_FILE" .env'
+            withCredentials([file(credentialsId: params.ENV_FILE_CRED_ID, variable: 'ENV_FILE_PATH')]) {
+              env.ENV_FILE = env.ENV_FILE_PATH
             }
           }
         }
         sh '''
           set -eu
-          if [ ! -f .env ]; then
-            echo ".env not found. Provide it in the workspace or via ENV_FILE_CRED_ID." >&2
+          if [ ! -f "$ENV_FILE" ]; then
+            echo "Env file not found at: $ENV_FILE" >&2
+            echo "Provide .env in the workspace or set ENV_FILE_CRED_ID to a Secret file." >&2
             exit 1
           fi
 
           required="DATABASE_URL APP_ENV BACKEND_HOST BACKEND_PORT CHROMA_DB_HOST CHROMA_DB_PORT JWT_SECRET SESSION_SECRET API_KEY REACT_APP_API_URL OPENAI_API_KEY"
           for key in $required; do
-            if ! grep -Eq "^${key}=" .env; then
+            if ! grep -Eq "^${key}=" "$ENV_FILE"; then
               echo "Missing or malformed env var: ${key}" >&2
               exit 1
             fi
