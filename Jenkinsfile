@@ -33,7 +33,9 @@ pipeline {
         script {
           if (params.ENV_FILE_CRED_ID?.trim()) {
             withCredentials([file(credentialsId: params.ENV_FILE_CRED_ID, variable: 'ENV_FILE_PATH')]) {
-              env.ENV_FILE = env.ENV_FILE_PATH
+              def safeTag = (env.BUILD_TAG ?: 'jenkins').replaceAll(/[^A-Za-z0-9_.-]/, '_')
+              env.ENV_FILE = "/tmp/jenkins_env_${safeTag}"
+              sh 'cp "$ENV_FILE_PATH" "$ENV_FILE"'
             }
           }
         }
@@ -133,6 +135,13 @@ pipeline {
           exit 0
         fi
         $COMPOSE_CMD -p "$PROJECT_NAME" -f "$COMPOSE_FILE" ps
+      '''
+    }
+    cleanup {
+      sh '''
+        if [ -n "${ENV_FILE:-}" ] && echo "$ENV_FILE" | grep -q "^/tmp/jenkins_env_"; then
+          rm -f "$ENV_FILE"
+        fi
       '''
     }
   }
