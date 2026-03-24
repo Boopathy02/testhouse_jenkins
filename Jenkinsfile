@@ -39,6 +39,7 @@ pipeline {
         }
         sh '''
           set -eu
+          echo "Using ENV_FILE=$ENV_FILE"
           if [ ! -f "$ENV_FILE" ]; then
             echo "Env file not found at: $ENV_FILE" >&2
             echo "Provide .env in the workspace or set ENV_FILE_CRED_ID to a Secret file." >&2
