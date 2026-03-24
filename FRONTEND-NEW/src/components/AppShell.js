@@ -40,7 +40,7 @@ const AppShell = ({
             <i className="fa-solid fa-code"></i>
           </div>
           <div>
-            <div className={styles.brandTitle}>Testify Automator</div>
+            <div className={styles.brandTitle}>Boopathy</div>
             <div className={styles.brandSubtitle}>AI Test Automation</div>
           </div>
         </div>
