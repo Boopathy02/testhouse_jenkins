@@ -52,7 +52,7 @@ const Signup = () => {
                 <aside className={styles.brandPanel}>
                     <div className={styles.brandContent}>
                         <div className={styles.brandBadge}>TA</div>
-                        <h1>Testify Automator</h1>
+                        <h1>Boopathy</h1>
                         <p>Launch a new workspace for AI-driven test automation.</p>
                         <div className={styles.brandMeta}>
                             <span>Unified flows</span>

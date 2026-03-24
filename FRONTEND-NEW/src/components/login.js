@@ -64,8 +64,8 @@ const Login = () => {
                 <aside className={styles.brandPanel}>
                     <div className={styles.brandContent}>
                         <div className={styles.brandBadge}>TA</div>
-                        <h1>Testify Automator</h1>
-                        <p>Access your Testify Automator workspace to design, generate, and execute AI-driven test suites.</p>
+                        <h1>Boopathy</h1>
+                        <p>Access your Boopathy workspace to design, generate, and execute AI-driven test suites.</p>
                         <div className={styles.brandMeta}>
                             <span>Project Ready</span>
                             <span>Execution Insights</span>
