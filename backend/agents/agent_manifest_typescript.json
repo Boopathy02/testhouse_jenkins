@@ -1,0 +1,10 @@
+{
+  "agent_name": "PlaywrightTypescriptAgent",
+  "language": "typescript",
+  "capabilities": ["codegen", "run", "explain"],
+  "actions": [
+    {"action": "generate_method", "input": "elementSpec", "output": "code"},
+    {"action": "generate_test", "input": "testCaseSpec", "output": "code"},
+    {"action": "generate_page_file", "input": "entries", "output": "file"}
+  ]
+}

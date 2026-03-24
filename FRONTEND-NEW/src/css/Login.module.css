@@ -1,0 +1,431 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  background:
+    radial-gradient(circle at 30% 20%, rgba(30, 80, 120, 0.25), transparent 55%),
+    #0a0f18;
+
+  padding: 2rem;
+}
+
+.themeToggle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(15, 23, 36, 0.85);
+  color: #f8fafc;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  z-index: 3;
+}
+
+.themeToggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+
+.lightTheme {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(62, 136, 255, 0.15), transparent 55%),
+    #f6f8fc;
+}
+
+.lightTheme .themeToggle {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1b2a44;
+  border-color: rgba(18, 42, 68, 0.15);
+}
+
+.lightTheme .authShell {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 36, 0.08);
+  box-shadow: 0 24px 60px rgba(34, 53, 82, 0.12);
+}
+
+.lightTheme .brandContent {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(15, 23, 36, 0.08);
+  box-shadow: 0 18px 32px rgba(26, 44, 72, 0.12);
+}
+
+.lightTheme .brandBadge {
+  background: rgba(15, 23, 36, 0.08);
+  color: #1b2a44;
+}
+
+.lightTheme .brandPanel h1 {
+  color: #111827;
+}
+
+.lightTheme .brandPanel p {
+  color: rgba(20, 30, 48, 0.75);
+}
+
+.lightTheme .brandMeta span {
+  background: rgba(15, 23, 36, 0.06);
+  border-color: rgba(15, 23, 36, 0.12);
+  color: rgba(20, 30, 48, 0.9);
+}
+
+.lightTheme .form h2 {
+  color: #0f172a;
+}
+
+.lightTheme .form label {
+  color: rgba(30, 41, 59, 0.75);
+}
+
+.lightTheme .form input {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  border-color: rgba(15, 23, 36, 0.15);
+  box-shadow: inset 0 1px 2px rgba(15, 23, 36, 0.08);
+}
+
+.lightTheme .passwordToggle {
+  color: rgba(30, 41, 59, 0.7);
+}
+
+.lightTheme .form p,
+.lightTheme .formFooter {
+  color: rgba(30, 41, 59, 0.7);
+}
+
+.lightTheme .form a {
+  color: #0f7a5a;
+}
+
+
+.authShell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  width: min(1100px, 95vw);
+  height: min(700px, 85vh);
+
+  background: #0f1724;
+  border-radius: 18px;
+  overflow: hidden;
+
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  align-items: stretch;
+}
+
+
+.brandPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3rem;
+}
+
+
+.brandContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.85rem;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  padding: clamp(1.4rem, 2.8vw, 2rem);
+  border-radius: 16px;
+  background: rgba(8, 16, 24, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  max-width: 360px;
+}
+
+.brandPanel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 75% 40%, rgba(20, 200, 120, 0.4), transparent 55%),
+    radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.06), transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.brandBadge {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #e6f4ff;
+}
+
+.brandPanel h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  position: relative;
+  z-index: 1;
+  color: #f8fbff;
+}
+
+.brandPanel p {
+  margin: 0;
+  color: rgba(226, 236, 255, 0.78);
+  line-height: 1.6;
+  font-size: 0.98rem;
+  max-width: 28ch;
+  position: relative;
+  z-index: 1;
+}
+
+.brandPanel::before {
+  content: "";
+  position: absolute;
+  bottom: 12%;
+  right: 6%;
+  width: clamp(140px, 18vw, 200px);
+  height: clamp(140px, 18vw, 200px);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(48, 220, 150, 0.9), rgba(12, 24, 20, 0.15) 60%),
+    linear-gradient(135deg, rgba(10, 18, 26, 0.65), rgba(6, 10, 16, 0.95));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  transform: rotate(-4deg);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.brandMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  position: relative;
+  z-index: 1;
+  justify-content: flex-start;
+}
+
+.brandMeta span {
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(234, 245, 255, 0.92);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 3rem;
+  max-width: 440px;
+  width: 100%;
+
+  margin: 0 auto;
+
+  background: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 0.35rem;
+}
+
+
+.form h2 {
+  margin-bottom: 1.25rem;
+  text-align: center;
+  color: #f8fafc;
+  font-size: 1.65rem;
+  letter-spacing: -0.01em;
+}
+
+.form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(226, 236, 255, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+  margin-bottom: 0.6rem;
+}
+
+.form input {
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--border-radius-small);
+  font-size: 1rem;
+  background-color: rgba(10, 16, 24, 0.85);
+  color: #f8fafc;
+  transition: var(--transition-form-elements);
+  min-height: 44px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 18px rgba(4, 10, 18, 0.25);
+  width: 100%;
+}
+
+.passwordField {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+}
+
+
+.passwordField input {
+  padding-right: 3rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: inherit;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: transparent;
+  border: none;
+  padding: 0 0.35rem;
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  box-shadow: none;
+}
+
+
+
+.passwordToggle:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary-border);
+  color: var(--color-text-primary);
+}
+
+/* .passwordToggle:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.passwordField input:focus + .passwordToggle {
+  background: rgba(20, 200, 120, 0.18);
+  border-color: rgba(20, 200, 120, 0.45);
+  color: #eafff6;
+} */
+
+
+.form input:focus {
+  border-color: rgba(20, 200, 120, 0.6);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(20, 200, 120, 0.18);
+  outline: none;
+}
+
+.submitButton {
+  padding: var(--button-padding-md);
+  border: none;
+  border-radius: var(--border-radius-small);
+  background: linear-gradient(135deg, #24d084, #12a06b);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-height: 44px;
+  width: 100%;
+  margin-top: 0.8rem;
+  box-shadow: 0 18px 32px rgba(10, 180, 120, 0.25);
+}
+
+.submitButton:hover {
+  background: linear-gradient(135deg, #1ab874, #0e8557);
+}
+
+.form p {
+  text-align: center;
+  margin-top: 1rem;
+  color: rgba(226, 236, 255, 0.7);
+}
+
+.form a {
+  color: #2ce59a;
+  font-weight: 600;
+}
+
+.formFooter {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(226, 236, 255, 0.7);
+}
+
+.errorMessage {
+  color: #ff0000;
+  font-size: 0.9rem;
+  margin: -0.5rem 0 0;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .authShell {
+    grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+    height: min(90vh, 720px);
+  }
+
+  .brandPanel {
+    padding: 1.6rem;
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .form {
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: none;
+    grid-column: 1;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+    .form {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+  .authShell {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .brandPanel {
+    display: none;
+  }
+
+  .form {
+    border-right: none;
+  }
+}

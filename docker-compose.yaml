@@ -1,0 +1,67 @@
+services:
+  frontend:
+    build:
+      context: ./FRONTEND-NEW
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    networks:
+      - testify-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+      - "6080:6080"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - chromadb
+    restart: unless-stopped
+    networks:
+      - testify-net
+
+  postgres:
+    image: postgres:17.7-alpine
+    container_name: testify-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: testify
+      POSTGRES_USER: testify_user
+      POSTGRES_PASSWORD: strongpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U testify_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - testify-net
+
+  chromadb:
+    image: chromadb/chroma:1.0.12
+    container_name: testify-chromadb
+    volumes:
+      - chroma_data:/chroma/.chroma/index
+    networks:
+      - testify-net
+
+volumes:
+  postgres_data:
+  chroma_data:
+
+networks:
+  testify-net:
+    driver: bridge

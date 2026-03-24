@@ -1,0 +1,239 @@
+.urlInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: transparent;
+  padding: 0;
+}
+
+.contentBox {
+  padding: 1.2rem 2rem;
+  border: 1px solid var(--color-border);
+  min-height: 40vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--color-surface-1);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--shadow-light);
+}
+
+.title {
+  font-size: 18px;
+  color: var(--color-text-primary);
+}
+
+.urlInput {
+  padding: 0.7rem;
+  font-size: 15px;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  margin-top: 8px;
+  transition: var(--transition-form-elements);
+}
+
+.urlInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(31, 47, 87, 0.15);
+  outline: none;
+}
+
+.errorText {
+  color: var(--color-error);
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.enrichButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 0.8rem;
+}
+
+.enrichButton {
+  padding: var(--button-padding-lg);
+  font-size: 15px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+  min-width: 150px;
+  min-height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.enrichButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.refreshButton {
+  padding: var(--button-padding-lg);
+  font-size: 15px;
+  background: var(--color-accent);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+  min-width: 180px;
+  min-height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.refreshButton:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+.refreshButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.testCaseOutput {
+  margin-top: 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  padding: 15px;
+  background-color: var(--color-surface-1);
+  box-shadow: var(--shadow-light);
+}
+
+.testCaseOutputTitle {
+  color: var(--color-text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 5px;
+}
+
+.jsonPre {
+  background-color: var(--color-console-bg);
+  color: var(--color-console-text);
+  padding: 10px;
+  border-radius: var(--border-radius-medium);
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--font-mono);
+}
+
+.navigationButtons {
+  width: 100%;
+  max-width: 1200px;
+  margin: 15px auto 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navButton {
+  padding: 0.6rem 1.6rem;
+  font-size: 15px;
+  background: var(--color-surface-2);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+  min-width: 160px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navButton:hover {
+  background-color: var(--color-surface-3);
+  transform: translateY(-2px);
+}
+
+.navButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.navButton.next:disabled {
+  background: var(--color-accent);
+  color: var(--color-on-primary);
+  border-color: transparent;
+}
+
+.navButton i {
+  margin-right: 8px;
+}
+
+.navButton.next i {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+.next {
+  background: var(--color-accent);
+  color: var(--color-on-primary);
+  border-color: transparent;
+}
+
+.next:hover {
+  background-color: var(--color-accent-dark);
+}
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+@media (max-width: 768px) {
+  .contentBox {
+    padding: 1rem 1.5rem;
+  }
+
+  .title {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .navigationButtons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .navButton {
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentBox {
+    width: 90vw;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .urlInput {
+    font-size: 14px;
+    padding: 0.6rem;
+  }
+
+  .enrichButton,
+  .navButton {
+    font-size: 14px;
+    padding: 0.5rem 1.2rem;
+    min-height: 36px;
+  }
+}

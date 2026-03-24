@@ -1,0 +1,259 @@
+.imageUploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.uploadBox {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
+}
+
+.uploadTitle {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+}
+
+.uploadSubtitle {
+  margin: 0 0 1.2rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.modeTabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  padding: 0.4rem;
+  border-radius: var(--border-radius-medium);
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  margin-bottom: 1.2rem;
+}
+
+.modeTab {
+  border: none;
+  background: transparent;
+  padding: 0.6rem 1rem;
+  border-radius: var(--border-radius-small);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: var(--color-text-secondary);
+}
+
+.modeTabActive {
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-light);
+}
+
+.dropzone {
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius-medium);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--color-surface-1);
+}
+
+.uploadIcon {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+}
+
+.uploadText {
+  margin: 0.3rem 0 0;
+  font-size: 1rem;
+}
+
+.uploadInstructions {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.selectFilesButton {
+  margin-top: 0.6rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-small);
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.selectFilesButtonIcon {
+  font-size: 0.9rem;
+}
+
+.selectFilesButtonText {
+  font-size: 0.85rem;
+}
+
+.availablePagesContainer {
+  margin-top: 1rem;
+}
+
+.availablePagesTitle {
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+}
+
+.pageList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.pageListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 0.5rem 0.7rem;
+  background: var(--color-surface-1);
+  font-size: 0.85rem;
+}
+
+.removeButton {
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  border-radius: var(--border-radius-small);
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.dbForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.formInput {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  padding: 0.6rem 0.8rem;
+  background: var(--color-surface-1);
+  font-size: 0.85rem;
+}
+
+.dbActions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.secondaryButton {
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  border-radius: var(--border-radius-small);
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primaryButton {
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--border-radius-small);
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.errorText {
+  color: var(--color-error);
+  font-size: 0.85rem;
+}
+
+.successMessage {
+  margin-top: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.actionButtons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.uploadImagesButton {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius-small);
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.nextButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nextButton {
+  padding: var(--button-padding-sm);
+  border-radius: var(--border-radius-small);
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .formRow,
+  .dbActions {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,50 @@
+You are an expert UI vision parser. You must extract *all* visible UI elements from this screenshot.
+
+Output one line per element, using this exact format:
+  <label_text> - <ocr_type> - <intent>
+
+Rules:
+1. <label_text> — The **visible label or text** closest to the interactive element.  
+   - For input fields, use the *label* or *placeholder* ("Email", "Full Name", etc.).  
+   - For buttons, use the button text ("Submit", "Save", "Cancel").  
+   - For dropdowns or picklists (any field with ▼, chevron, or option list), use their label ("Country", "Account Type", "Time Zone","Lead Source").  
+   - If the label appears above or beside the field, capture it.  
+   - Also include any clickable cards, or app names (like "Customer Service", "Sales Hub") visible on the screen.
+   - Never leave label_text blank unless nothing is visible nearby.
+
+2. <ocr_type> — One of: textbox, button, label, checkbox, **select**, link, image.  
+   - **Always classify dropdowns, picklists, comboboxes, or any field with an angle-down (▼) icon or down arrow symbol as `select`.**  
+   - If the field displays a default or pre-selected value (for example, showing a word or option inside), but also has a dropdown indicator or opens a list of options, it must still be categorized as `select`.  
+   - Fields with free text entry and no dropdown or arrow indicator → `textbox`.  
+   - When in doubt, if the element visually includes a chevron, down-arrow, caret, or expandable menu indicator, treat it as a `select`.
+
+3. <intent> — A concise snake_case token describing the element’s role.  
+   - Derived directly from label_text. Examples:  
+       "Email" → email_field  
+       "Password" → password_field  
+       "Login" → login_action  
+       "Account Type" → account_type_select
+       "Lead Source" → lead_source_select
+       
+        
+     
+
+4. Do NOT include any commentary, numbering, or blank lines.
+
+5. Do NOT paraphrase label_text — use the **exact on-screen wording**.
+
+6. Be exhaustive: every visible field, dropdown, or button must appear as one output line.
+
+Examples:
+  Username - textbox - username_field
+  Password - textbox - password_field
+  Login - button - login_action
+  Remember Me - checkbox - remember_me_checkbox
+  Account Type - select - account_type_select
+  Originating Lead - enter - originating_lead_field
+  Preferred Method of Contact - select - preferred_method_of_contact_select
+  Primary Time Zone - select - primary_time_zone_select
+  Lead Source - select - lead_source_select
+  Company Name - enter - company_name_field
+  Home Phone - enter - home_phone_field
+  Coustomer Service - link - customer_service_action

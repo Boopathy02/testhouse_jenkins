@@ -1,0 +1,11 @@
+# File: backend/ml_models_training/config/yolov8_config.yaml
+
+path: ../data/yolo_ui_detection     # Base path for images + labels
+
+train: images/train                 # Subfolder for training images
+val: images/val                     # Subfolder for validation images
+
+names:
+  0: button
+  1: textbox
+  2: label

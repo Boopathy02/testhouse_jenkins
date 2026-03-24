@@ -1,0 +1,112 @@
+.promptsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.backButton {
+  padding: var(--button-padding-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+}
+
+.backButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.editorsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.promptCard {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-light);
+}
+
+.promptHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-surface-1);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.promptTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.editorTextarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 220px;
+  background-color: var(--color-surface-1);
+  color: var(--color-text-primary);
+}
+
+.editorTextarea:focus {
+  outline: none;
+}
+
+.saveButton {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+}
+
+.saveButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.saveButton:disabled {
+  background-color: var(--color-gray);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 240px;
+  width: 100%;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  background: var(--color-surface-1);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius-large);
+  gap: 0.5rem;
+}

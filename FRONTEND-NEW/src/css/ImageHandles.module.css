@@ -1,0 +1,175 @@
+.imageDragDropContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imageCard {
+  width: 170px;
+  height: 140px;
+  position: relative;
+  background-color: var(--color-surface-1);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: var(--transition-button);
+}
+
+.imageCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+}
+
+.imagePreview {
+  width: 100%;
+  height: 105px;
+  object-fit: cover;
+}
+
+.imageName {
+  padding: 4px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--color-text-primary);
+  word-break: break-word;
+}
+
+.imageIndex {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: 1.5px 6px;
+  font-size: 11px;
+  border-radius: var(--border-radius-large);
+  font-weight: 600;
+}
+
+.removeButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: none;
+  border-radius: var(--border-radius-round);
+  color: var(--color-on-primary);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  transition: var(--transition-button);
+}
+
+.removeButton:hover {
+  background-color: var(--color-error);
+  transform: scale(1.08);
+}
+
+.previewOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 16, 28, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1.5rem;
+}
+
+.previewModal {
+  width: min(1100px, 96vw);
+  max-height: 90vh;
+  background: var(--color-white);
+  border-radius: var(--border-radius-large);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-deep);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.previewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface-1);
+}
+
+.previewTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  word-break: break-word;
+}
+
+.previewClose {
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  border-radius: var(--border-radius-small);
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+  transition: var(--transition-button);
+}
+
+.previewClose:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.previewBody {
+  padding: 1rem;
+  overflow: auto;
+  background: var(--color-white);
+}
+
+.previewBody img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius-medium);
+  border: 1px solid var(--color-border);
+}
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+@media (max-width: 768px) {
+  .imageCard {
+    width: 150px;
+    height: 125px;
+  }
+
+  .imagePreview {
+    height: 90px;
+  }
+
+  .imageName {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageCard {
+    width: 130px;
+    height: 110px;
+  }
+
+  .imagePreview {
+    height: 80px;
+  }
+
+  .imageName {
+    font-size: 11px;
+  }
+
+  .removeButton {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+}

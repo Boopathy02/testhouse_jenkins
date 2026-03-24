@@ -1,0 +1,165 @@
+You are a **Senior Automation Architect**. Generate **Playwright Python test scripts** for the following user story:
+
+USER STORY:
+{story_block}
+
+
+===========================================
+🚨 ABSOLUTE RULES (MUST FOLLOW)
+===========================================
+
+1. **USE ONLY the POM methods listed below.**
+   - NEVER create or guess new method names.
+   - NEVER write locators: no page.locator(), no CSS, no XPath.
+   - ONLY call existing POM functions: def method(page, ...).
+
+2. **DO NOT write import statements.**
+   The runner auto-handles imports.
+
+3. **DO NOT create helper functions.**
+   Only write test functions.
+
+4. **EVERY test MUST start with:**
+    page.goto("{site_url}")
+
+5.1 **Never use empty strings for inputs.**
+    If the user story provides a value, use it exactly.
+
+5.2 **Map steps to the closest available POM method.**
+    If a step mentions a field/button and there is a matching `enter_`/`select_`/`click_` method in the list,
+    use it instead of skipping.
+
+6. **Output ONLY valid Python code — no markdown, no comments outside the test body.**
+
+
+===========================================
+📌 REQUIRED TEST FUNCTIONS
+===========================================
+
+You MUST generate the following test functions:
+
+-----------------------------------------------------------
+1️⃣ **POSITIVE TEST**
+Function name:
+    test_positive_feature()
+
+Rules:
+– Follow the correct flow exactly as per the user story  
+– Use valid inputs  
+– Use POM methods in correct order  
+– Use assert_* POM methods wherever available
+- Use assert_* POM methods only immediately after their corresponding enter_/fill_/select_action
+- Do Not repeat accert_* after submit/click steps unless the value was re-entered or changed  
+
+-----------------------------------------------------------
+2️⃣ **NEGATIVE TEST**
+Function name:
+    test_negative_feature()
+
+Rules:
+– Use invalid/missing inputs  
+– Example: empty strings, wrong formats  
+– Should lead to failure paths  
+– Use assert_* methods where applicable  
+
+-----------------------------------------------------------
+3️⃣ **EDGE TEST**
+Function name:
+    test_edge_feature()
+
+Rules:
+– Use extreme inputs:
+    "A" * 256
+    "!@#$%^&*()"
+    very long email
+– Still follow user story steps  
+– Use POM methods only  
+
+-----------------------------------------------------------
+4️⃣ **ACCESSIBILITY TEST**
+Function name:
+    test_accessibility_feature()
+
+Rules:
+– Follow positive flow navigation using ONLY POM methods  
+– At logical checkpoints validate accessibility using Playwright:
+
+        expect(page.get_by_text("Full Name")).to_be_visible()
+
+– DO NOT create or use accessibility helper methods  
+– DO NOT use Axe directly (your framework triggers it automatically)  
+
+-----------------------------------------------------------
+5️⃣ **SECURITY TESTS**
+
+You MUST generate the following security test functions:
+
+**A) XSS (Cross-Site Scripting) TEST**
+Function name:
+    test_security_xss()
+
+Rules:
+– Inject XSS payloads into **every input POM method**.
+      Payload 1: "<script>alert('XSS')</script>"
+      Payload 2: '"><img src=x onerror=alert("XSS")>'
+– Use a different payload for each input field if possible.
+– After submitting, assert that the script was not executed or rendered:
+      assert "<script>" not in page.content()
+– Use only POM methods for navigation & input.
+
+**B) SQL Injection (SQLi) TEST**
+Function name:
+    test_security_sqli()
+
+Rules:
+– Inject SQLi payloads into **every input POM method**.
+      Payload 1: "' OR '1'='1"
+      Payload 2: "' OR '1'='1' --"
+– Use a different payload for each input field if possible.
+– After submitting, check for generic error pages or unexpected success.
+– Use only POM methods for navigation & input.
+
+**C) SECURITY HEADERS TEST**
+Function name:
+    test_security_headers()
+
+Rules:
+– Navigate to the site's main URL.
+– Verify that essential security headers are present.
+    response = page.goto("{site_url}")
+    headers = response.headers or {{}}
+    assert any(k.lower() == "content-security-policy" for k in headers)
+    assert any(k.lower() == "x-frame-options" for k in headers)  
+
+
+===========================================
+📄 PAGE OBJECT METHODS (ALLOWED)
+===========================================
+{page_method_section}
+
+
+===========================================
+💡 EXTRA HINTS
+===========================================
+{dynamic_steps}
+
+
+===========================================
+🎯 OUTPUT FORMAT — CRITICAL
+===========================================
+
+Output ONLY valid Python test functions:
+
+❌ No imports  
+❌ No markdown  
+❌ No helper functions  
+❌ No text outside the tests  
+
+Each test MUST follow:
+
+def test_positive_feature(page):
+    page.goto("SITE_URL")
+    <POM method calls>
+    <assertions>
+
+NOW GENERATE ALL FIVE TEST FUNCTIONS.

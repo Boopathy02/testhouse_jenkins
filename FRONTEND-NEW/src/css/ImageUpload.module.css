@@ -1,0 +1,260 @@
+.imageUploadContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: transparent;
+  padding: 0;
+}
+
+.uploadBox {
+  padding: 1.2rem 2rem;
+  border: 1px solid var(--color-border);
+  min-height: 40vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--color-surface-1);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--shadow-light);
+}
+
+.uploadTitle {
+  font-size: 18px;
+  color: var(--color-text-primary);
+}
+
+.uploadSubtitle {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: 15px;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed var(--color-border);
+  padding: 0.75rem;
+  border-radius: var(--border-radius-medium);
+  transition: all 0.3s ease;
+  background-color: var(--color-background-light);
+}
+
+.dropzone:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-light);
+}
+
+.uploadIcon {
+  font-size: 30px;
+  margin-bottom: 6px;
+  color: var(--color-primary);
+}
+
+.uploadText {
+  font-size: 16px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.uploadInstructions {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.selectFilesButton {
+  padding: var(--button-padding-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-surface-1);
+  transition: var(--transition-button);
+}
+
+.selectFilesButton:hover {
+  background-color: var(--color-primary-light);
+  box-shadow: var(--shadow-light);
+}
+
+.selectFilesButtonIcon {
+  font-size: 14px;
+}
+
+.selectFilesButtonText {
+  font-size: 15px;
+}
+
+.errorText {
+  color: var(--color-error);
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.successMessage {
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: rgba(30, 143, 90, 0.12);
+  color: var(--color-success);
+  border: 1px solid rgba(30, 143, 90, 0.2);
+  border-radius: var(--border-radius-medium);
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.availablePagesContainer {
+  margin-top: 15px;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--shadow-light);
+  background-color: var(--color-surface-1);
+}
+
+.availablePagesTitle {
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 15px;
+}
+
+.pageList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pageListItem {
+  background-color: var(--color-surface-1);
+  border-radius: var(--border-radius-small);
+  margin-bottom: 4px;
+  padding: 6px 10px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.uploadImagesButton {
+  padding: var(--button-padding-lg);
+  font-size: 15px;
+  color: var(--color-on-primary);
+  border: 0;
+  background: var(--color-primary);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+  min-width: 160px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadImagesButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.generateMethodsButton {
+  padding: var(--button-padding-lg);
+  font-size: 15px;
+  color: var(--color-on-primary);
+  border: 0;
+  background: var(--color-accent);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+  min-width: 180px;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generateMethodsButton:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+.nextButtonContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 15px auto 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nextButton {
+  padding: 0.6rem 1.6rem;
+  font-size: 15px;
+  color: var(--color-on-primary);
+  border: 0;
+  background: var(--color-accent);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition-button);
+  min-width: 160px;
+  min-height: 40px;
+  text-align: center;
+}
+
+.nextButton:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+.nextButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinner {
+  border: 3px dotted var(--color-white);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .uploadBox {
+    padding: 1rem 1.5rem;
+  }
+  .nextButtonContainer {
+    justify-content: center;
+  }
+}

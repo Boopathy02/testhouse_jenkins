@@ -1,0 +1,109 @@
+.runnerPanel {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.runnerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.runnerHeader h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+}
+
+.runnerHeader p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.runnerMeta {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.runnerMeta strong {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.runnerActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  padding: var(--button-padding-md);
+  border-radius: var(--border-radius-small);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition-button);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primaryButton {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.primaryButton:hover {
+  background: var(--color-primary-dark);
+}
+
+.secondaryButton {
+  background: var(--color-white);
+  border-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.secondaryButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.errorBanner {
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-small);
+  background: rgba(180, 50, 47, 0.08);
+  color: var(--color-error);
+  border: 1px solid rgba(180, 50, 47, 0.3);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 720px) {
+  .runnerPanel {
+    padding: 1.5rem;
+  }
+  .runnerHeader {
+    flex-direction: column;
+  }
+}

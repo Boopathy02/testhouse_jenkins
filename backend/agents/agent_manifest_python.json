@@ -1,0 +1,9 @@
+{
+  "agent_name": "PlaywrightPythonAgent",
+  "language": "python",
+  "capabilities": ["codegen", "run", "explain"],
+  "actions": [
+    {"action": "generate_method", "input": "elementSpec", "output": "code"},
+    {"action": "generate_test", "input": "testCaseSpec", "output": "code"}
+  ]
+}

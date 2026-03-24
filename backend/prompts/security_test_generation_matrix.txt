@@ -1,0 +1,159 @@
+enterprise-grade AI-driven test automation platform.
+
+Your task is to generate **SECURITY TEST CASES DIRECTLY FROM THE PROVIDED
+SECURITY INJECTION MATRIX (Excel)**.
+
+=====================================================================
+SOURCE OF TRUTH — DO NOT DEVIATE
+=====================================================================
+
+The **SECURITY INJECTION MATRIX below is the ONLY source of truth**.
+
+👉 **ONE MATRIX ROW = ONE TEST FUNCTION**
+👉 If the matrix has N rows, you MUST generate EXACTLY N test functions.
+
+=====================================================================
+USER STORY — UI FLOW (MANDATORY FOR UI TESTS)
+=====================================================================
+
+This defines the EXACT UI navigation flow.
+ALL UI-based security tests MUST follow this flow BEFORE payload injection.
+If the flow cannot be expressed using the AVAILABLE PAGE METHODS, SKIP the test.
+
+{story_block}
+
+=====================================================================
+SECURITY INJECTION MATRIX (ITERATE ROW BY ROW)
+=====================================================================
+
+Each block below represents **ONE AND ONLY ONE security test case**.
+You MUST process them **SEQUENTIALLY from top to bottom**.
+
+{security_matrix}
+
+=====================================================================
+CRITICAL EXECUTION RULES (NO EXCEPTIONS)
+=====================================================================
+
+1. PROCESS EVERY MATRIX ROW — DO NOT STOP EARLY.
+2. DO NOT merge similar rows.
+3. DO NOT summarize.
+4. DO NOT group by injection type.
+5. DO NOT invent payloads.
+6. USE THE PAYLOAD EXACTLY AS GIVEN IN EACH ROW.
+7. Output ONLY Python test functions.
+
+=====================================================================
+PAGE OBJECT MODEL (STRICT)
+=====================================================================
+
+- Use ONLY the Page Object Model (POM) methods listed below for UI interactions
+  after navigation.
+- NEVER invent new methods.
+- NEVER use locators, selectors, XPath, CSS, or get_by_* APIs.
+- DO NOT import anything.
+- DO NOT define helper functions.
+
+Each UI test MUST begin with:
+    page.goto("{site_url}")
+
+=====================================================================
+AVAILABLE PAGE METHODS
+=====================================================================
+{page_method_section}
+
+=====================================================================
+INPUT METHODS ELIGIBLE FOR PAYLOAD INJECTION
+=====================================================================
+{payload_list}
+
+=====================================================================
+EXECUTION DECISION — PER MATRIX ROW
+=====================================================================
+
+For EACH matrix row, do the following:
+
+1. Read:
+   - Injection Type
+   - Field Location
+   - Backend Usage
+   - Injection Payload
+   - Risk
+
+2. Decide execution layer:
+
+UI-TESTABLE → Generate Playwright UI test  
+NON-UI → Generate SKIPPED test with reason
+
+=====================================================================
+UI-TESTABLE INJECTIONS (GENERATE PLAYWRIGHT)
+=====================================================================
+
+Generate executable Playwright tests ONLY for:
+- SQL Injection
+- XSS (Reflected / Stored)
+- Command Injection
+- Input Fuzzing / Overflow
+- Security Headers
+
+=====================================================================
+NON-UI INJECTIONS (SKIP WITH EXPLICIT REASON)
+=====================================================================
+
+DO NOT generate Playwright logic for:
+- NoSQL Injection
+- LDAP Injection
+- XPath Injection
+
+Instead generate EXACTLY this format:
+
+def test_<descriptive_name>():
+    assert True, "Skipped: Not UI-testable (API / backend level injection)"
+
+=====================================================================
+TEST FUNCTION NAMING (MANDATORY)
+=====================================================================
+
+Each test function name MUST be UNIQUE and derived from the matrix row:
+
+Format:
+    test_<row_number>_<injection_type>_<field>_<risk>()
+
+Examples:
+    test_row_01_sqli_login_username_unauthorized_access()
+    test_row_02_command_injection_filename_rce()
+    test_row_07_nosql_login_api_skipped()
+
+=====================================================================
+UI TEST STRUCTURE (PER ROW)
+=====================================================================
+
+For EACH UI-testable row:
+
+1. page.goto("{site_url}")
+2. Translate EVERY step in USER STORY into a POM method call, in order
+3. Do NOT inject until the final navigation step is complete
+4. Inject ONLY the payload from THIS row
+5. Inject ONLY into relevant input fields
+6. Submit the flow using the correct POM submit/click action from the story
+7. Add ONE assertion proving:
+    - No SQL error leakage
+    - No JS dialog execution
+    - No command execution
+    - OR application stability
+
+=====================================================================
+FINAL OUTPUT RULES (STRICT)
+=====================================================================
+
+- Generate ALL test cases implied by the matrix
+- Some tests will be executable
+- Some tests will be skipped
+- NO markdown
+- NO comments
+- NO explanations
+- ONLY Python test functions
+
+DO NOT STOP UNTIL ALL MATRIX ROWS ARE CONVERTED.
+
+GENERATE NOW.

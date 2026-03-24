@@ -1,0 +1,93 @@
+You are a **Principal Application Security Architect** working on an
+enterprise-grade AI-driven test automation platform.
+
+Generate Playwright Python security tests for the user story below.
+
+USER STORY
+==========
+{story_block}
+
+AVAILABLE PAGE METHODS
+======================
+{page_method_section}
+
+INPUT METHODS ELIGIBLE FOR PAYLOAD INJECTION
+============================================
+{payload_list}
+
+LOGIN / SUBMIT ACTIONS
+======================
+If a POM method exists to submit the form or click the login button, CALL IT using the exact method name.
+Try the following common candidate names (in order) if present in the POMs:
+    click_login
+    click_login_button
+    click_login_submit
+    submit_login
+    press_login
+    click_sign_in
+If none of these methods are present, add a skipped-step comment INSIDE the test body:
+    # Skipped submit due to missing method: <reason>
+
+RULES
+=====
+1. USE ONLY the POM methods listed above.
+2. Pass `page` as the first argument to every POM method call.
+3. NO imports, no helper functions, no locators.
+4. Each test MUST start with:
+    page.goto("{site_url}")
+5. Output ONLY executable Python test functions.
+
+REQUIRED TEST FUNCTIONS
+=======================
+
+1) XSS
+Function: test_security_xss(page)
+- Inject payloads into every input:
+    "<script>alert('XSS')</script>"
+    '"><img src=x onerror=alert("XSS")>'
+    "<svg/onload=alert(1)>"
+    "<iframe src=javascript:alert(1)>"
+- Register dialogs and assert none fired:
+    dialogs = []
+    page.on("dialog", lambda d: dialogs.append(d.message))
+    assert not dialogs
+
+2) SQLi
+Function: test_security_sqli(page)
+- Inject payloads:
+    "' OR '1'='1"
+    "' OR '1'='1' --"
+    "' UNION SELECT NULL,NULL --"
+    "'; DROP TABLE users; --"
+- Assert page content has no SQL error keywords.
+
+3) Command Injection
+Function: test_security_command_injection(page)
+- Inject payloads:
+    "; ls"
+    "&& whoami"
+    "| cat /etc/passwd"
+    "$(whoami)"
+    "`whoami`"
+- Assert app remains stable (page.url or page.title not empty).
+
+4) Input Fuzzing
+Function: test_security_input_fuzzing(page)
+- Inject payloads:
+    "A" * 5000
+    "B" * 10000
+    "@#$%^&*()" * 200
+    "9" * 100
+- Assert page still responds.
+
+5) Security Headers
+Function: test_security_headers(page)
+- response = page.goto("{site_url}")
+- headers = response.headers or {{}}
+- Assert:
+    "content-security-policy"
+    "x-frame-options"
+    "x-content-type-options"
+    "strict-transport-security" (only if https)
+
+OUTPUT ONLY the five test functions. No markdown, no extra text.

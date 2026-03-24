@@ -1,0 +1,236 @@
+.validationContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.panelTitle {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+}
+
+.panelSubtitle {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.panelActions {
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.linkButton {
+  background: transparent;
+  border: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.constraintGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.constraintItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  align-items: start;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  padding: 0.9rem 1rem;
+  background: var(--color-surface-1);
+  cursor: pointer;
+}
+
+.constraintItem input {
+  margin-top: 0.2rem;
+  accent-color: var(--color-primary);
+  width: 18px;
+  height: 18px;
+}
+
+.constraintTitle {
+  display: block;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.constraintDescription {
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+.panelFooter {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.8rem;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.panelFooterLabel {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.modeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.modeCard {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-medium);
+  background: var(--color-surface-1);
+  padding: 1.2rem;
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  transition: var(--transition-button);
+}
+
+.modeCardActive {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-light);
+  background: rgba(42, 212, 155, 0.08);
+}
+
+.modeIcon {
+  height: 44px;
+  width: 44px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.modeContent h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.modeContent p {
+  margin: 0 0 0.6rem;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+}
+
+.modeList {
+  margin: 0;
+  padding-left: 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.actionRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.backButton {
+  padding: var(--button-padding-sm);
+  background: var(--color-white);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition-button);
+}
+
+.backButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.generateButton {
+  padding: var(--button-padding-sm);
+  border-radius: var(--border-radius-small);
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-button);
+}
+
+.generateButton:hover {
+  background: var(--color-primary-dark);
+}
+
+.nextButton {
+  padding: var(--button-padding-sm);
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--color-primary);
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-button);
+}
+
+.nextButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nextButton:not(:disabled):hover {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+@media (max-width: 768px) {
+  .panelHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .panelFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .actionRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

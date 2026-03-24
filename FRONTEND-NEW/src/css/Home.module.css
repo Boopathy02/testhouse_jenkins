@@ -1,0 +1,636 @@
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.editorOnly .dashboardContainer,
+.editorOnly .workflowContainer,
+.editorOnly .projectListDormant,
+.editorOnly .recentProjectsHeader,
+.editorOnly .projectList {
+  display: none;
+}
+
+.editorOnly .ideLayout {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.editorOnly .ideToolbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.editorOnly .ideWorkspace {
+  height: calc(100vh - 72px);
+}
+
+.logoutButton {
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: var(--button-padding-sm);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+  font-size: 0.85rem;
+}
+
+.logoutButton:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ---------- NEW PROJECT BUTTON ---------- */
+.newProjectButton {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  padding: var(--button-padding-md);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.newProjectButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ---------- DIALOG OVERLAY ---------- */
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialogContent {
+  background-color: var(--color-surface-1);
+  border-radius: var(--border-radius-medium);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  width: 90%;
+  max-width: 420px;
+  box-shadow: var(--shadow-medium);
+  animation: fadeInScale 0.3s ease-out forwards;
+}
+
+.dialogContentH2 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* ---------- FORM ---------- */
+.formLabel {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-primary);
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+
+.formInput,
+.formSelect {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-form-elements);
+  margin-top: 0.3rem;
+  background-color: var(--color-surface-1);
+}
+
+.formSelect {
+  margin-bottom: 1rem;
+}
+
+.formInput:focus,
+.formSelect:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(31, 47, 87, 0.15);
+  outline: none;
+}
+
+/* ---------- DIALOG ACTIONS ---------- */
+.dialogActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.cancelButton,
+.startButton {
+  flex: 1;
+  padding: var(--button-padding-md);
+  border: none;
+  border-radius: var(--border-radius-small);
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  cursor: pointer;
+  transition: var(--transition-button);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancelButton {
+  background: var(--color-gray);
+  color: var(--color-on-primary);
+}
+
+.cancelButton:hover {
+  background-color: var(--color-gray-dark);
+}
+
+.startButton {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.startButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.editorSection {
+  margin: 1.5rem auto 2.5rem;
+  width: min(1280px, 94%);
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editorHeader {
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-background-light);
+}
+
+.editorHeader h3 {
+  margin: 0;
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  color: var(--color-text-primary);
+}
+
+.editorMeta {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: var(--color-text-secondary);
+  display: flex;
+  gap: 1rem;
+}
+
+.editorContainer {
+  height: clamp(360px, 55vh, 680px);
+}
+
+.projectDetailSection {
+  margin: 1.5rem auto 0;
+  width: min(1280px, 94%);
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectDetailHeader {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.projectDetailTitle {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  color: var(--color-text-primary);
+}
+
+.projectDetailOrg {
+  margin: 0.15rem 0 0;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: var(--color-text-secondary);
+}
+
+.projectDetailLoading {
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: var(--color-text-secondary);
+}
+
+.projectDetailGrid {
+  padding: 1.2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.2rem;
+}
+
+.projectInfo,
+.projectPaths,
+.projectFilesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.projectInfo h4,
+.projectPaths h4,
+.projectFilesSection h4 {
+  margin: 0;
+  font-size: clamp(0.95rem, 2.4vw, 1.05rem);
+  color: var(--color-text-primary);
+}
+
+.projectInfoList,
+.projectPathsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.projectInfoList li,
+.projectPathsList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.4rem;
+}
+
+.projectInfoList li:last-child,
+.projectPathsList li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.projectInfoList span,
+.projectPathsList span {
+  color: var(--color-text-secondary);
+}
+
+.projectInfoList strong,
+.projectPathsList strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+.projectFilesTree {
+  max-height: 18rem;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-surface-1);
+  padding: 0.6rem;
+  min-height: 12rem;
+}
+
+.projectFilesList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.projectFileItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectFileButton {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.25rem 0.35rem;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  transition: background-color 0.2s ease;
+}
+
+.projectFileButton:hover {
+  background-color: var(--color-primary-light);
+}
+
+.projectFileButtonActive {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.projectFileIcon {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 0.85rem;
+}
+
+.projectFileLoading {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.projectFileLoadButton {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-1);
+  color: var(--color-text-primary);
+  border-radius: var(--border-radius-small);
+  padding: var(--button-padding-sm);
+  cursor: pointer;
+  font-size: clamp(0.8rem, 2vw, 0.85rem);
+  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.projectFileLoadButton:hover {
+  background-color: var(--color-primary-light);
+}
+
+.projectFileHint {
+  margin: 0.4rem 0 0;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- BUTTON UTILS (LOGIN / SIGNUP REUSE) ---------- */
+.loginButton,
+.signupButton,
+.ctaButton {
+  padding: var(--button-padding-md);
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: var(--transition-button);
+}
+
+.loginButton {
+  background-color: var(--color-surface-1);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.loginButton:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.signupButton,
+.ctaButton {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: none;
+}
+
+.signupButton:hover,
+.ctaButton:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ---------- RESPONSIVENESS ---------- */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .navbarBrand {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navbarUser {
+    order: 2;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    width: auto;
+  }
+
+  /* New Project button below user area */
+  .newProjectButton {
+    align-self: flex-end;
+    width: auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbarTitle {
+    font-size: 1rem;
+  }
+
+  .navbarSubtitle {
+    font-size: 0.7rem;
+  }
+
+  .newProjectButton {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .formInput,
+  .formSelect {
+    font-size: 0.85rem;
+  }
+
+  .cancelButton,
+  .startButton {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+  }
+}
+
+.ideLayout {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  height: min(72vh, 860px);
+  background-color: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+}
+
+.ideToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-1);
+}
+
+.ideToolbarLabel {
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+}
+
+.ideToolbarTitle {
+  margin: 0.2rem 0 0 0;
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+}
+
+.ideToolbarPath {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  word-break: break-word;
+}
+
+.ideToolbarActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ideActionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: var(--button-padding-sm);
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface-1);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition-button);
+}
+
+.ideActionButton:hover:not(:disabled) {
+  background-color: var(--color-background-light);
+}
+
+.ideActionButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.ideActionButtonPrimary {
+  background: var(--color-primary);
+  border-color: transparent;
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-light);
+}
+
+.ideActionButtonPrimary:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+}
+
+.ideCloseButton {
+  background-color: rgba(192, 53, 43, 0.08);
+  border-color: transparent;
+  color: var(--color-error);
+}
+
+.ideCloseButton:hover:not(:disabled) {
+  background-color: rgba(192, 53, 43, 0.16);
+  color: var(--color-error);
+}
+
+.ideWorkspace {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.leftPanel {
+  width: 300px;
+  border-right: 1px solid var(--color-border);
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: var(--color-surface-1);
+}
+
+.leftPanel h4 {
+  margin-top: 0;
+}
+
+.rightPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.noFileSelected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--color-text-secondary);
+}
